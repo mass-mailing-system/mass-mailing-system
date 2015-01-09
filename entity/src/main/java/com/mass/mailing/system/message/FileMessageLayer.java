@@ -16,6 +16,7 @@ public class FileMessageLayer extends AbstractMessageLayer {
     }
 
     public FileMessageLayer(Long id, String sourceFile) {
+        super.setId(id);
         this.sourceFile = sourceFile;
     }
 
