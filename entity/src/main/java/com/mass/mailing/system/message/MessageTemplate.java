@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Спрингом сделать инъекции, для автоматизации
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
@@ -12,16 +12,16 @@ public class MessageTemplate {
 
     private List<MessageLayer> msgLayers = new ArrayList<>();
 
-    public MessageTemplate(){}
+    public MessageTemplate() {
+    }
 
     public MessageTemplate(MessageLayer msgLayer) {
         msgLayers.add(msgLayer);
     }
 
-    public MessageTemplate(List<MessageLayer> msgLayers){
+    public MessageTemplate(List<MessageLayer> msgLayers) {
         this.msgLayers.addAll(msgLayers);
     }
-
 
     public List<MessageLayer> getMsgLayers() {
         return msgLayers;
@@ -34,4 +34,5 @@ public class MessageTemplate {
     public void setMsgLayer(MessageLayer msgLayer) {
         this.msgLayers.add(msgLayer);
     }
+
 }
