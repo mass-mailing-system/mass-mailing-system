@@ -11,8 +11,9 @@ package com.mass.mailing.system.message;
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
-public class TextMessageLayer extends AbstractMessageLayer {
+public class TextMessageLayer {
     private String content;
+    private Long id;
     
     public TextMessageLayer(){}
     public TextMessageLayer( String content ){
@@ -35,5 +36,18 @@ public class TextMessageLayer extends AbstractMessageLayer {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 }
