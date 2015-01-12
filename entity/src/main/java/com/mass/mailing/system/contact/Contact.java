@@ -7,7 +7,6 @@
 package com.mass.mailing.system.contact;
 
 /**
- * Маркерный интерфейс 
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
