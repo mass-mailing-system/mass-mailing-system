@@ -1,44 +1,27 @@
 package com.mass.mailing.system.message;
 
+
+import org.apache.commons.lang.Validate;
+
+import java.nio.file.Path;
+
 /**
  *
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
-public class FileMessageLayer {
+public class FileMessageLayer implements MessageLayer {
 
-    private String sourceFile;
-    private Long id;
-    
-    public FileMessageLayer() {}
+    private Path sourceFile;
 
-    public FileMessageLayer(String sourceFile) {
+    public FileMessageLayer(final Path sourceFile) {
+        Validate.notNull(sourceFile, "Source path is required");
+
         this.sourceFile = sourceFile;
     }
 
-    public FileMessageLayer(Long id, String sourceFile) {
-        this.id = id;
-        this.sourceFile = sourceFile;
-    }
-
-    public String getSourceFile() {
+    @Override
+    public Path getContent() {
         return sourceFile;
-    }
-
-    public void setSourceFile(String sourceFile) {
-        this.sourceFile = sourceFile;
-    }
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 }

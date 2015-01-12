@@ -8,9 +8,14 @@ package com.mass.mailing.system.message;
 
 /**
  * This is marker interface
+ *
+ * Я подумал, что МесседжЛейер - это все-таки не энтити, а value-object,
+ * поэтому убрал все айдишники
+ *
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
 public interface MessageLayer {
-    
+
+    public Object getContent();
 }
