@@ -6,22 +6,22 @@
 
 package com.mass.mailing.system.message;
 
+
+import org.apache.commons.lang.Validate;
+
 /**
  *
  * @author Oleg Kozak
  * @author Illia Rudenko
  */
-public class TextMessageLayer {
+public class TextMessageLayer implements MessageLayer {
+
     private String content;
-    private Long id;
-    
-    public TextMessageLayer(){}
-    public TextMessageLayer( String content ){
+
+    public TextMessageLayer(final String content) {
+        Validate.notNull(content, "Text is required");
+
         this.content = content;
-    }
-    public TextMessageLayer( String content, Long id ){
-        this.content = content;
-        this.id = id;
     }
 
     /**
@@ -29,25 +29,5 @@ public class TextMessageLayer {
      */
     public String getContent() {
         return content;
-    }
-
-    /**
-     * @param content the content to set
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 }
