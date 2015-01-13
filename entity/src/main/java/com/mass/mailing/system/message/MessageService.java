@@ -5,6 +5,7 @@
  */
 package com.mass.mailing.system.message;
 
+import com.mass.mailing.system.messager.Messager;
 import com.mass.mailing.system.contact.Contact;
 import java.util.ArrayList;
 import java.util.List;
