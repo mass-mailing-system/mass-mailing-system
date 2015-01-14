@@ -33,15 +33,17 @@ public class MessageTemplate extends Entity {
     }
 
     public MessageTemplate(final Long id, final FileMessageLayer fileLayer) {
-        Validate.notNull(fileLayer, "FileMessageLayer is required");
 
         this.id = id;
-
-        sourceFiles = new ArrayList<>();
-        sourceFiles.add(fileLayer);
+        addFileLayer(fileLayer);
     }
 
     public void addSourceFile(FileMessageLayer fileLayer) {
+
+        addFileLayer(fileLayer);
+    }
+
+    private void addFileLayer(FileMessageLayer fileLayer) {
         Validate.notNull(fileLayer, "FileMessageLayer is required");
 
         if(sourceFiles != null) {
@@ -59,6 +61,10 @@ public class MessageTemplate extends Entity {
 
     public MessageLayer getTextContent() {
         return textContent;
+    }
+
+    public void setTextContent(TextMessageLayer textContent) {
+        this.textContent = textContent;
     }
 
     public List<FileMessageLayer> getSourceFiles() {
