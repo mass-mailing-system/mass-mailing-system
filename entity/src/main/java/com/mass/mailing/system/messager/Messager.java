@@ -17,6 +17,7 @@ import com.mass.mailing.system.message.MessageService;
  */
 public abstract class Messager implements Runnable {
     private MessageService m;
+
     public Messager( MessageService m ){
         this.m = m;
     }
@@ -28,6 +29,10 @@ public abstract class Messager implements Runnable {
     public void run() {
         //execute();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public MessageService getMessageService() {
+        return m;
     }
     
 }
