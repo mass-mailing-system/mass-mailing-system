@@ -20,11 +20,12 @@ import java.io.IOException;
 public class WhatsAppSender extends Messager {
 
     public static final String RUN_COMMAND = "python run.py";
-    public static final String WHATSAPP_SCRIPT_PATH = System.lineSeparator()+ "whatsApp";
-    public static final String USER_PHONE = "<phone number>"; //type here registered phone number to send messages from
+    public static final String WHATSAPP_SCRIPT_PATH =
+            "/home/darm/IdeaProjects/system-mass-mailing/whatsApp"; //insert your own path to script files
+    public static final String USER_PHONE = "<user phone>"; //type here registered phone number to send messages from
 
     //to get password use "python yowsup-cli demos --help-config"
-    public static final String PASSWORD = "<base64 password>"; //type here password in base64
+    public static final String PASSWORD = "<user password>"; //type here password in base64
 
     public WhatsAppSender(MessageService m) {
         super(m);
@@ -33,18 +34,25 @@ public class WhatsAppSender extends Messager {
     @Override
     public void execute() {
 
-        //writes all contact phones to a string file
+        //writes all contact phones to a temporary text file
         ContactSerializer.serialize(getMessageService().getContacts());
 
         try {
             //for python script successful, run terminal command must look like that:
             //python run.py <textFileName> <text message> <userPhone> <password base64>
-            String response = OsUtils.runCommand(createCommand(), WHATSAPP_SCRIPT_PATH);
+            String command = createCommand();
+            System.out.println(command);
+            String response = OsUtils.runCommand(command, WHATSAPP_SCRIPT_PATH);
+
             System.out.println(response);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted!");
+            e.printStackTrace();
         }
 
+        //deletes temporary text file
         ContactSerializer.deleteFile();
     }
 

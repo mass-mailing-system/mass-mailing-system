@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
 
 /**
@@ -39,13 +40,22 @@ public class OsUtils {
         return writer.toString();
     }
 
-    public static String runCommand(String command, String rootDirectoryName) throws IOException {
+    public static String runCommand(String command, String rootDirectoryName) throws IOException, InterruptedException {
 
         StringWriter writer = new StringWriter();
 
         if(command != null) {
             Process p = Runtime.getRuntime().exec(command, null, new File(rootDirectoryName));
-            IOUtils.copy(p.getInputStream(), writer, "UTF-8");
+            p.waitFor();
+
+            InputStream is = p.getInputStream();
+            InputStream is1 = p.getErrorStream();
+
+            //copies errorStream and inputStream into one string
+            IOUtils.copy(is, writer, "UTF-8");
+            IOUtils.copy(is1, writer, "UTF-8");
+            is.close();
+            is1.close();
         }
 
         return writer.toString();

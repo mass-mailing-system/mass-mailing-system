@@ -13,12 +13,13 @@ import java.util.List;
 
 public class ContactSerializer {
 
+    public static final String FILE_PATH = "whatsApp/contacts.txt";
     public static final String FILE_NAME = "contacts.txt";
 
     public static void serialize(List<Contact> contacts) {
 
-        try(PrintWriter printWriter = new PrintWriter(FILE_NAME)) {
-
+        try(PrintWriter printWriter = new PrintWriter(FILE_PATH)) {
+            System.out.println(contacts.toString());
             printWriter.write(contactsToString(contacts));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -26,7 +27,7 @@ public class ContactSerializer {
     }
 
     public static void deleteFile() {
-        File file = new File(FILE_NAME);
+        File file = new File(FILE_PATH);
         if(file.exists()) {
             file.delete();
         }

@@ -35,5 +35,5 @@ if __name__==  "__main__":
   print credentials
 
 # sending messages
-  x = YowsupSendStack(credentials, messages, False)
+  x = YowsupSendStack(credentials, message_tuples, False)
   x.start()
