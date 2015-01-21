@@ -4,26 +4,31 @@ from stack import YowsupSendStack
 import sys
 
 if __name__==  "__main__":
-  file_name = sys.argv[1]
-  text_message = sys.argv[2]
-  sender_tel = sys.argv[3]
-  sender_password = sys.argv[4]
+  contacts_and_message_file = sys.argv[1]
+  sender_tel = sys.argv[2]
+  sender_password = sys.argv[3]
 
 #checking for null values
-  if file_name is None or text_message is None or sender_tel is None or sender_password is None:
+  if contacts_and_message_file is None or sender_tel is None or sender_password is None:
     print 'run.py <tel_numbers_file> <text_message> <sender_tel> <sender_password (base64)>'
-    system.exit(2)
+    sys.exit(2)
 
 # reading phone numbers from file
-  text_file = open(file_name, 'r')
-  numbers_str = text_file.read().rstrip()
+  text_file = open(contacts_and_message_file, 'r')
+  contacts_and_message_str = text_file.read().rstrip()
   text_file.close()
-  
-  list_numbers = numbers_str.split(' ')
+
+  contacts_and_message_list = contacts_and_message_str.split(':')
+
+# getting contacts_list
+  contacts_list = contacts_and_message_list[0].split(' ')
+
+# getting text_message to send
+  text_message = contacts_and_message_list[1]
 
   message_tuples = []
 # creating tuples like <phone_number, text_message>
-  for tel_number in list_numbers:
+  for tel_number in contacts_list:
     tel_tuple = (tel_number, text_message)
     message_tuples.append(tel_tuple)
   

@@ -59,7 +59,7 @@ public class MessageTemplate extends Entity {
         return id;
     }
 
-    public MessageLayer getTextContent() {
+    public TextMessageLayer getTextContent() {
         return textContent;
     }
 

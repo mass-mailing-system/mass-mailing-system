@@ -21,11 +21,11 @@ public class App
     {
         MessageService msgService = new MessageService();
 
-        MessageTemplate msgTemplate = new MessageTemplate(234L, new TextMessageLayer("Hello"));
+        MessageTemplate msgTemplate = new MessageTemplate(234L, new TextMessageLayer("Hello tralala"));
         msgService.setMessageTemplate(msgTemplate);
 
         Contact contact = new Contact();
-        contact.setPhoneNumber("<phone example>");
+        contact.setPhoneNumber("<contact phone>");
         msgService.setContact(contact);
 
         msgService.setMesseger(new WhatsAppSender(msgService));
