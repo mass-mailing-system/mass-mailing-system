@@ -1,3 +1,31 @@
-### System mass mailing
+# Mass Mailing System
 
-For details see wiki
+
+### Project structure (last edit: 09/01/2015)
++ parent module (pom.xml)
++ dao.jar
++ entity.jar
++ core.jar
++ web.war
+
+
+### Requirements
+- maven 3+
+- jdk 1.7+
+
+### Setup
+1. Go to project root dir:
+
+   ```$ cd ../system-mass-mailing```
+
+2. **Build** project:
+
+   ```$ mvn clean```
+
+   ```$ mvn install```
+
+3. **Run** and **Deploy** embedded Tomcat 7 ("ctrl + C" - stop server):
+
+   ```$ mvn tomcat7:run```
+
+4. If all is **OK** you can see a index page: [http://localhost:8585/](http://localhost:8585/)
